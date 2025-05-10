@@ -46,3 +46,34 @@ def SaveAnimationGif(fig, frames, fps, path, resolution=(500, 500), axis_ranges=
 
     images[0].save(path, save_all=True, append_images=images[1:], duration=1000/fps, loop=0)
     print(f"Successfully saved animation to '{path}'")
+
+def Save3DAnimationGif(fig, frames, fps, path, resolution=(500, 500), axis_ranges=[[0,6], [0,6], [0,6]], camera = dict(eye=dict(x=1.25, y=1.25, z=1.25))):
+    images = []
+    print(f"Saving 3D animation to '{path}' with {len(frames)} frames, {fps} fps, and resolution {resolution}...")
+    for frame in frames:
+        temp_fig = go.Figure(
+            data=frame.data,
+            layout=fig.layout
+        )
+
+        temp_fig.update_layout(
+            scene=dict(
+                xaxis=dict(range=axis_ranges[0], visible=False,showgrid=False, showline=False, showticklabels=False, tickmode='linear', dtick=1, title=None, backgroundcolor='white', showbackground=True),
+                yaxis=dict(range=axis_ranges[1], visible=False,showgrid=False, showline=False, showticklabels=False, tickmode='linear', dtick=1, title=None, backgroundcolor='white', showbackground=True),
+                zaxis=dict(range=axis_ranges[2], visible=False,showgrid=False, showline=False, showticklabels=False, tickmode='linear', dtick=1, title=None, backgroundcolor='white', showbackground=True),
+                aspectmode='manual',
+                aspectratio=dict(x=1, y=1, z=1),
+                camera=camera
+            ),
+            plot_bgcolor='white',
+            width=resolution[0],
+            height=resolution[1],
+            margin=dict(l=0, r=0, t=0, b=0),
+        )
+
+        img_bytes = temp_fig.to_image(format="png")
+        image = Image.open(io.BytesIO(img_bytes))
+        images.append(image.convert("RGB"))
+
+    images[0].save(path, save_all=True, append_images=images[1:], duration=1000/fps, loop=0)
+    print(f"Successfully saved 3D animation to '{path}'")
