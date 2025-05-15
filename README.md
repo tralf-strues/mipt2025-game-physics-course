@@ -24,3 +24,9 @@
   <img src="hw2/task_soft_ball_sim_2d.gif" width="32%"/>
   <img src="hw2/task_soft_ball_sim_3d.gif" width="32%"/>
 </p>
+
+# HW 3 (XPBD)
+**Cloth in a non-convex bounding mesh in 3D**
+<p float="left">
+  <img src="hw3/task_bounded_cloth.gif" width="33%"/>
+</p>
