@@ -30,3 +30,10 @@
 <p float="left">
   <img src="hw3/task_bounded_cloth.gif" width="33%"/>
 </p>
+
+**Cloth vs rigid body**
+<p float="left">
+  <img src="hw3/task_cloth_vs_rigid_body1.gif" width="32%"/>
+  <img src="hw3/task_cloth_vs_rigid_body2.gif" width="32%"/>
+  <img src="hw3/task_cloth_vs_rigid_body3.gif" width="32%"/>
+</p>
